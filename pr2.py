@@ -11,6 +11,7 @@ elif age > 50:
 else:
     print('u must be an immortal being')  
 
+
 """
 Script for asking user's name and age.
 Depending on how old the user is, different response message is printed.
