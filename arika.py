@@ -5,3 +5,4 @@ def sum_list(numbers):
         total = total + num
     return total
 print(sum_list(my_list))
+
