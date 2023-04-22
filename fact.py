@@ -7,3 +7,4 @@ def factorial(n):
 n = int(input('ваше число'))
 print('факториал числа =')   
 print(factorial(n))
+help()
