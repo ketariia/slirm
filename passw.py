@@ -98,28 +98,30 @@ class AcademicPerformance:
     def __str__(self):
         return f"{self.student.last_name} {self.student.first_name} {self.student.patronymic} - {self.discipline.name}: {self.grade}"
 
-department = Department("Кафедра математики", "Факультет естественных наук", "Александрович Иван Алексеев", 101, 2, "+7 (999) 999-99-99", 10)
-teacher1 = Teacher("Барболина", "Екатерина", "Сергеевна", department, 1980, 2005, 15, "старший преподаватель", "женский", "ул. Пушкина, д. 10, кв. 5", "Москва", "+7 (999) 888-88-88")
-discipline1 = Discipline("Математический анализ", department, teacher1, 120, "экзамен")
-
-student1 = Student("Александрович", "Иван", "Алексеев", department, 2000, "мужской", "ул. Ленина, д. 23, кв. 12", "Москва", "+7 (999) 777-77-77")
-performance1 = AcademicPerformance(teacher1, discipline1, student1, 5)
-
-department.add_discipline(discipline1)
-teacher1.add_discipline(discipline1)
-student1.add_academic_performance(performance1)
-discipline1.add_academic_performance(performance1)
-
 # Добавление входа в систему
 username = "user"
-password = "password"
+password = input("Введите начальный пароль: ")
 login = Login(username, password)
+if login.authenticate(password):
+    department = Department("Кафедра математики", "Факультет естественных наук", "Александрович Иван Алексеев", 101, 2, "+7 (999) 999-99-99", 10)
+    teacher1 = Teacher("Барболина", "Екатерина", "Сергеевна", department, 1980, 2005, 15, "старший преподаватель", "женский", "ул. Пушкина, д. 10, кв. 5", "Москва", "+7 (999) 888-88-88")
+    discipline1 = Discipline("Математический анализ", department, teacher1, 120, "экзамен")
 
-# Демонстрация использования класса входа в систему
-entered_password = input("Введите пароль: ")
-if login.authenticate(entered_password):
-    print(student1)
-    for performance in student1.academic_performances:
-        print(performance)
+    student1 = Student("Александрович", "Иван", "Алексеев", department, 2000, "мужской", "ул. Ленина, д. 23, кв. 12", "Москва", "+7 (999) 777-77-77")
+    performance1 = AcademicPerformance(teacher1, discipline1, student1, 5)
+
+    department.add_discipline(discipline1)
+    teacher1.add_discipline(discipline1)
+    student1.add_academic_performance(performance1)
+    discipline1.add_academic_performance(performance1)
+
+    # Демонстрация использования класса входа в систему
+    entered_password = input("Введите пароль: ")
+    if login.authenticate(entered_password):
+        print(student1)
+        for performance in student1.academic_performances:
+            print(performance)
+    else:
+        print("Неверный пароль")
 else:
-    print("Неверный пароль")
+    print("Неверный начальный пароль")
